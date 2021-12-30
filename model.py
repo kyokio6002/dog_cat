@@ -68,8 +68,10 @@ class Network(nn.Module):
         return x
 
 
+# model = Network()
 # Instantiate a neural network model
-model = Network()
+model = torch.hub.load('pytorch/vision:v0.6.0', 'resnet50', pretrained=True)
+model.fc = nn.Linear(in_features=2048, out_features=2)
 print(model)
 
 # loss, optimizer
